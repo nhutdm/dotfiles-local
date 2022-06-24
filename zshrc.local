@@ -1,0 +1,6 @@
+export PATH="$HOME/.bin:$PATH"
+
+eval "$(/usr/local/bin/brew shellenv)"
+source /usr/local/opt/asdf/asdf.sh
+
+. ~/.asdf/plugins/java/set-java-home.zsh

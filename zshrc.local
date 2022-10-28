@@ -6,3 +6,6 @@ eval "$(/usr/local/bin/brew shellenv)"
 source /usr/local/opt/asdf/asdf.sh
 
 . ~/.asdf/plugins/java/set-java-home.zsh
+
+export PNPM_HOME="/Users/nhutdm/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"

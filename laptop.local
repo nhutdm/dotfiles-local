@@ -1,8 +1,20 @@
 #!/bin/sh
 
 brew bundle --file=- <<EOF
+tap "buo/cask-upgrade"
+
+cask "a-better-finder-rename"
+cask "docker"
+cask "ferdium"
+cask "firefox"
 cask "google-chrome"
+cask "intellij-idea"
+cask "iterm2"
+cask "microsoft-edge"
+cask "microsoft-office"
+cask "nextcloud"
 cask "rectangle"
+cask "syncthing"
 cask "the-unarchiver"
 cask "visual-studio-code"
 EOF

@@ -9,5 +9,5 @@ eval "$(/usr/local/bin/brew shellenv)"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-export PNPM_HOME="/Users/nhutdm/Library/pnpm"
+export PNPM_HOME="/Users/$USER/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"

@@ -1,0 +1,54 @@
+#!/bin/sh
+
+brew bundle --file=- <<EOF
+tap "buo/cask-upgrade"
+
+cask "a-better-finder-rename"
+cask "docker"
+cask "ferdium"
+cask "firefox"
+cask "google-chrome"
+cask "intellij-idea"
+cask "iterm2"
+cask "microsoft-edge"
+cask "microsoft-office"
+cask "nextcloud"
+cask "rectangle"
+cask "syncthing"
+cask "the-unarchiver"
+cask "visual-studio-code"
+EOF
+
+add_or_update_asdf_plugin "java" "https://github.com/halcyon/asdf-java.git"
+
+install_asdf_language_specified_version() {
+  local language="$1"
+  local version="$2"
+
+  if [ -z "$version" ]; then
+    version="$(asdf list-all "$language" | grep -v "[a-z]" | tail -1)"
+  fi
+
+  if ! asdf list "$language" | grep -Fq "$version"; then
+    asdf install "$language" "$version"
+    asdf global "$language" "$version"
+  fi
+}
+
+fancy_echo "Installing latest Java..."
+java_latest_temurin_17="latest:temurin-17"
+install_asdf_language_specified_version "java" "$java_latest_temurin_17"
+append_to_zshrc ". ~/.asdf/plugins/java/set-java-home.zsh"
+
+fancy_echo "Installing latest pnpm..."
+npm install -g pnpm
+append_to_zshrc "export PNPM_HOME=\"/Users/\$USER/Library/pnpm\""
+append_to_zshrc "export PATH=\"\$PNPM_HOME:\$PATH\"" 1
+
+fancy_echo "Cleaning up old Homebrew formulae ..."
+brew cleanup
+
+if [ -r "$HOME/.rcrc" ]; then
+  fancy_echo "Updating dotfiles ..."
+  rcup
+fi

@@ -4,7 +4,7 @@ brew bundle --file=- <<EOF
 tap "buo/cask-upgrade"
 
 cask "a-better-finder-rename"
-cask "docker"
+cask "docker-desktop"
 cask "ferdium"
 cask "firefox"
 cask "google-chrome"
@@ -14,7 +14,7 @@ cask "microsoft-edge"
 cask "microsoft-office"
 cask "nextcloud"
 cask "rectangle"
-cask "syncthing"
+cask "syncthing-app"
 cask "the-unarchiver"
 cask "visual-studio-code"
 EOF
@@ -31,7 +31,7 @@ install_asdf_language_specified_version() {
 
   if ! asdf list "$language" | grep -Fq "$version"; then
     asdf install "$language" "$version"
-    asdf global "$language" "$version"
+    asdf set -u "$language" "$version"
   fi
 }
 

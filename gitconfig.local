@@ -1,0 +1,6 @@
+[user]
+  name = Nhut Duong
+  email = hello@nhutduong.com
+  signingkey = 16A8CCA2934EDC92
+[commit]
+  gpgsign = true
